@@ -1,4 +1,3 @@
-import * as icons from "../../img/icons.svg";
 import View from "./View";
 
 class ResultsView extends View {
