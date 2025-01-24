@@ -13,6 +13,15 @@ class RecipeView extends View {
     );
   }
 
+  addHandlerUpdateServings(handler) {
+    this._parentElement.addEventListener("click", function (e) {
+      const btn = e.target.closest(".btn--tiny");
+      if (!btn || btn.dataset.updateTo < 1) return;
+
+      handler(+btn.dataset.updateTo);
+    });
+  }
+
   _generateMarkup() {
     return `
         <figure class="recipe__fig">
@@ -44,12 +53,16 @@ class RecipeView extends View {
             <span class="recipe__info-text">servings</span>
 
             <div class="recipe__info-buttons">
-              <button class="btn--tiny btn--increase-servings">
+              <button data-update-to='${
+                this._data.servings - 1
+              }' class="btn--tiny btn--update-servings">
                 <svg>
                   <use href="${icons}#icon-minus-circle"></use>
                 </svg>
               </button>
-              <button class="btn--tiny btn--increase-servings">
+              <button data-update-to='${
+                this._data.servings + 1
+              }' class="btn--tiny btn--update-servings">
                 <svg>
                   <use href="${icons}#icon-plus-circle"></use>
                 </svg>
@@ -57,9 +70,7 @@ class RecipeView extends View {
             </div>
           </div>
 
-          <div class="recipe__user-generated">
-          
-          </div>
+          <div class="recipe__user-generated"></div>
           <button class="btn--round">
             <svg class="">
               <use href="${icons}#icon-bookmark-fill"></use>
@@ -73,19 +84,6 @@ class RecipeView extends View {
             ${this._data.ingredients
               .map(this._generateMarkupIngredient)
               .join("")}
-
-            
-
-            <li class="recipe__ingredient">
-              <svg class="recipe__icon">
-                <use href="${icons}#icon-check"></use>
-              </svg>
-              <div class="recipe__quantity">0.5</div>
-              <div class="recipe__description">
-                <span class="recipe__unit">cup</span>
-                ricotta cheese
-              </div>
-            </li>
           </ul>
         </div>
 
