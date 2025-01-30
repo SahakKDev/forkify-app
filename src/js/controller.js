@@ -107,3 +107,15 @@ const init = function () {
   addRecipeView.addHandlerUpload(controlAddRecipe);
 };
 init();
+
+/*
+  TODO
+  1. Display NUMBER OF PAGES between the pagination buttons
+  2. Ability to sort search results by DURATION
+  3. Perform INGREDIENT VALIDATION in view, before submitting the form
+
+  HARD
+  1. Shopping list feature: button on recipe to add ingredients to a list
+  2. Weekly meal planning feature: assign recipes to the next 7 days and show on a weekly calendar
+  3. GET NUTRATION DATA on each ingredient from spoonacular API (https://spoonacular.com/food-api) and calc total calories of recipe.
+*/
