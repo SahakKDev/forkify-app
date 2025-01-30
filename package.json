@@ -16,5 +16,12 @@
   },
   "dependencies": {
     "fractional": "^1.0.0"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "svgo": "2.8.0"
+      }
+    }
   }
 }
